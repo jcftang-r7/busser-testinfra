@@ -1,6 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 require "busser/runner_plugin"
+require "mkmf"
 
 # A Busser runner plugin for testinfra
 #
@@ -18,8 +19,11 @@ class Busser::RunnerPlugin::Testinfra < Busser::RunnerPlugin::Base
   end
 
   def install_testinfra
-    banner("Installing testinfra...")
-    run("pip install testinfra")
+    exe = find_executable0 "testinfra", nil
+    if exe.nil?
+      banner("Installing testinfra...")
+      run("pip install testinfra")
+    end
   end
 
 end
