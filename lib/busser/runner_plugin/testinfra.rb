@@ -22,7 +22,7 @@ class Busser::RunnerPlugin::Testinfra < Busser::RunnerPlugin::Base
     exe = find_executable0 "testinfra", nil
     if exe.nil?
       banner("Installing testinfra...")
-      if linux_variant == "Redhat"
+      if linux_variant[:family] == "RedHat"
         run("pip install setuptools==20.6.7")
       end
       run("pip install testinfra")
