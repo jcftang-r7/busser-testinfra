@@ -48,6 +48,6 @@ class Busser::RunnerPlugin::Testinfra < Busser::RunnerPlugin::Base
     elsif File.exist?("/etc/SuSE-release")
       r[:distro] = "SLES" if r[:distro].nil?
     end
-
+    return r
   end
 end
